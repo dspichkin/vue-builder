@@ -1,28 +1,65 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h2>Product Listing</h2>
+    <ProductListing/>
+
+    <h2>User Listing</h2>
+    <UserListing/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ListingBuilder from "./builders/ListingBuilder";
+import ListingDirector from "./builders/ListingDirector";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ProductListing: new ListingDirector(
+      new ListingBuilder()
+    ).makeProductListing(),
+    UserListing: new ListingDirector(new ListingBuilder()).makeUserListing()
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  padding: 1em;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: 0.75em;
+}
+
+h2:not(:first-child) {
+  margin-top: 0.75em;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+h3:not(:first-child) {
+  margin-top: 0.75em;
+}
+
+table {
+  width: 100%;
+}
+
+tr:not(:first-child) {
+  border-top: 1px solid #e9e9e9;
+}
+
+td {
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 </style>

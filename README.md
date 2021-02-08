@@ -1,4 +1,5 @@
 # builder
+Пример использования шаблона Builder с компонентами Vue.js
 
 ## Project setup
 ```
